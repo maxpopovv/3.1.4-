@@ -4,49 +4,55 @@
     <meta charset="UTF-8">
     <title>User</title>
     <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+
+    </style>
 </head>
 <body>
 
-<table class="user-table">
-    <tr>
-        <td>ID:</td>
-        <td th:text="${user.getId()}"></td>
-    </tr>
-    <tr>
-        <td>Username:</td>
-        <td th:text="${user.getUsername()}"></td>
-    </tr>
-    <tr>
-        <td>Name:</td>
-        <td th:text="${user.getName()}"></td>
-    </tr>
-    <tr>
-        <td>Surname:</td>
-        <td th:text="${user.getSurname()}"></td>
-    </tr>
-    <tr>
-        <td>Age:</td>
-        <td th:text="${user.getAge()}"></td>
-    </tr>
-    <tr>
-        <td>E-mail:</td>
-        <td th:text="${user.getEmail()}"></td>
-    </tr>
-    <tr>
-        <td>Roles:</td>
-        <td th:text="${user.getRoles()}"></td>
-    </tr>
-</table>
+<div class="container">
+    <table class="table user-table">
+        <tr>
+            <td>ID:</td>
+            <td th:text="${user.getId()}"></td>
+        </tr>
+        <tr>
+            <td>Username:</td>
+            <td th:text="${user.getUsername()}"></td>
+        </tr>
+        <tr>
+            <td>Name:</td>
+            <td th:text="${user.getName()}"></td>
+        </tr>
+        <tr>
+            <td>Surname:</td>
+            <td th:text="${user.getSurname()}"></td>
+        </tr>
+        <tr>
+            <td>Age:</td>
+            <td th:text="${user.getAge()}"></td>
+        </tr>
+        <tr>
+            <td>E-mail:</td>
+            <td th:text="${user.getEmail()}"></td>
+        </tr>
+        <tr>
+            <td>Roles:</td>
+            <td th:text="${user.getRoles()}"></td>
+        </tr>
+    </table>
 
-<div sec:authorize="hasRole('ROLE_ADMIN')">
-    <a th:href="@{/admin/update(id=${user.getId()})}" class="button">Update</a>
+    <div sec:authorize="hasRole('ROLE_ADMIN')" class="button-container">
+        <a th:href="@{/admin/update(id=${user.getId()})}" class="btn btn-primary">Update</a>
+        <form th:method="POST" th:action="@{/admin/delete(id=${user.getId()})}" style="display: inline;">
+            <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+    </div>
+
     <br/><br/>
-    <form th:method="POST" th:action="@{/admin/delete(id=${user.getId()})}">
-        <input type="submit" value="Delete" class="button"/>
-    </form>
+    <a th:href="@{/logout}" class="btn btn-secondary">Logout</a>
 </div>
-<br/><br/>
-<a th:href="@{/logout}" class="button">Logout</a>
 
 </body>
 </html>

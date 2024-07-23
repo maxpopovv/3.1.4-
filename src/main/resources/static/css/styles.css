@@ -9,7 +9,6 @@ body {
     text-align: center;
 }
 
-
 .user-table {
     width: 100%;
     margin: auto;
@@ -71,4 +70,38 @@ body {
 .button-container {
     text-align: center;
     margin-top: 20px;
+}
+
+.btn {
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
 }
