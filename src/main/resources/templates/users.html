@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All Users</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+
+<div>
+    <table class="user-table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.getId()}"></td>
+            <td th:text="${user.getUsername()}"></td>
+            <td>
+                <a th:href="@{/admin/user(id=${user.getId()})}" class="button">View</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<br/>
+<a th:href="@{/admin/new}" class="button">Add user</a>
+<br/><br/><br/>
+<a th:href="@{/logout}" class="button">Logout</a>
+
+</body>
+</html>

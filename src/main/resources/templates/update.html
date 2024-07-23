@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update User</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+
+<div class="form-container">
+    <form th:method="POST" th:action="@{/admin/user(id=${user.getId()})}" th:object="${user}">
+        <table class="form-table">
+            <tr>
+                <td><label for="username">Username:</label></td>
+                <td><input type="text" id="username" th:field="*{username}"></td>
+            </tr>
+            <tr>
+                <td><label for="password">Password:</label></td>
+                <td><input type="password" id="password" th:field="*{password}"></td>
+            </tr>
+            <tr>
+                <td><label for="name">Name:</label></td>
+                <td><input type="text" id="name" th:field="*{name}"></td>
+            </tr>
+            <tr>
+                <td><label for="surname">Surname:</label></td>
+                <td><input type="text" id="surname" th:field="*{surname}"></td>
+            </tr>
+            <tr>
+                <td><label for="age">Age:</label></td>
+                <td><input type="text" id="age" th:field="*{age}"></td>
+            </tr>
+            <tr>
+                <td><label for="email">Email:</label></td>
+                <td><input type="text" id="email" th:field="*{email}"></td>
+            </tr>
+            <tr>
+                <td><label>Roles:</label></td>
+                <td>
+                    <div th:each="role : ${user.getRoles()}">
+                        <input type="checkbox" name="roles"
+                               th:text="${role.getRole()}"
+                               th:value="${role.getId()}"
+                               th:field="*{roles}">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="Update" class="button">
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+</body>
+</html>
